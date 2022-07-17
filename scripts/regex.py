@@ -1,5 +1,5 @@
 import re
-with open ('tmpscreen/tmpocr.txt', 'r' ) as f:
+with open ('../tmpscreen/tmpocr.txt', 'r' ) as f:
     content = f.read()
     content_new = re.sub('\w+(.+):', r'', content, flags = re.M)
 

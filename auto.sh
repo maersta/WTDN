@@ -12,7 +12,7 @@ while true; do
    sleep 1
    
    echo "Sending screenshot to OCR API.."
-   curl -H "apikey:helloworld" --form "file=@tmpscreen/tmp.png" --form "language=eng" --form "isOverlayRequired=true" https://api.ocr.space/Parse/Image -o tmpscreen/tmpocr.txt 
+   curl -H "apikey:helloworld" --form "file=@tmpscreen/tmp.png" --form "language=eng" --form "isOverlayRequired=true" https://api.ocr.space/Parse/Image -o tmpscreen/tmp.txt 
    wait
    
    echo "Cleaning up result with regex.."

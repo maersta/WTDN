@@ -12,12 +12,12 @@ while true; do
    sleep 1
    
    echo "Sending screenshot to OCR API.."
-   curl -H "apikey:helloworld" --form "file=@tmpscreen/result.png" --form "language=eng" --form "isOverlayRequired=true" https://api.ocr.space/Parse/Image -o tmpscreen/tmpocr.txt 
+   curl -H "apikey:helloworld" --form "file=@tmpscreen/tmp.png" --form "language=eng" --form "isOverlayRequired=true" https://api.ocr.space/Parse/Image -o tmpscreen/tmpocr.txt 
    wait
    
    echo "Cleaning up result with regex.."
    python3 regex.py >> finished.txt
-   echo -e "\e[31m DONE - REPEATING UNTIL STOPPED.. \e[0m"
+   echo -e "\e[32m DONE - REPEATING UNTIL STOPPED.. \e[0m"
    read -n 1 -t 1 input
    
    if [[ $input = "q" ]] || [[ $input = "Q" ]] 

@@ -2,12 +2,22 @@
 
 while true; do
    echo "Starting autoscript... Press q to exit"
-adb shell screencap /sdcard/tmp.png
+   
+   echo "Taking screenshot.."
+   adb shell screencap /sdcard/tmp.png
    sleep 1
-adb pull /sdcard/tmp.png tmpscreen/result.png
+
+   echo "Grabbing screenshot.."
+   adb pull /sdcard/tmp.png tmpscreen/tmp.png
    sleep 1
-curl -H "apikey:helloworld" --form "file=@tmpscreen/result.png" --form "language=eng" --form "isOverlayRequired=true" https://api.ocr.space/Parse/Image -o tmpscreen/tmpocr.txt 
-python3 scripts/regex.py >> finished.txt
+   
+   echo "Sending screenshot to OCR API.."
+   curl -H "apikey:helloworld" --form "file=@tmpscreen/result.png" --form "language=eng" --form "isOverlayRequired=true" https://api.ocr.space/Parse/Image -o tmpscreen/tmpocr.txt 
+   wait
+   
+   echo "Cleaning up result with regex.."
+   python3 regex.py >> finished.txt
+   echo -e "\e[31m DONE - REPEATING UNTIL STOPPED.. \e[0m"
    read -n 1 -t 1 input
    
    if [[ $input = "q" ]] || [[ $input = "Q" ]] 

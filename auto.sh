@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# WTDN - Made by Maersta
 while true; do
 
    adb shell screencap /sdcard/tmp.png

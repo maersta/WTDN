@@ -56,7 +56,7 @@ echo -e "\e[32m 000000000000000000000000000000000000000000000000\e[0m"
 echo -e "\n"
 echo " Pulling the screenshot from adb device"
 echo -e "\n"
-adb pull /sdcard/tmp.png tmpscreen/result.png
+adb pull /sdcard/tmp.png tmpscreen/tmp.png
 fi
 wait
 
@@ -69,7 +69,7 @@ echo -e "\e[32m 000000000000000000000000000000000000000000000000\e[0m"
 echo -e "\n"
 echo " Calling the OCR API using curl.. "
 echo -e "\n"
-curl -H "apikey:helloworld" --form "file=@tmpscreen/result.png" --form "language=eng" --form "isOverlayRequired=true" https://api.ocr.space/Parse/Image -o tmpscreen/tmpocr.txt 
+curl -H "apikey:helloworld" --form "file=@tmpscreen/tmp.png" --form "language=eng" --form "isOverlayRequired=true" https://api.ocr.space/Parse/Image -o tmpscreen/tmp.txt 
 fi
 wait
 
@@ -82,8 +82,8 @@ echo -e "\e[32m 000000000000000000000000000000000000000000000000\e[0m"
 echo -e "\n"
 echo " Removing tmp data and images.. "
 echo -e "\n"
-rm tmpscreen/tmpocr.txt
-rm tmpscreen/result.png
+rm tmpscreen/tmp.txt
+rm tmpscreen/tmp.png
 fi
 wait
 

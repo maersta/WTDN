@@ -17,6 +17,7 @@ while true; do
    
    if [[ $input = "q" ]] || [[ $input = "Q" ]] 
    then
+      clear
       echo 
       break
    fi

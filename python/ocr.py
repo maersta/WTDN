@@ -8,6 +8,9 @@ import io
 
 import json
 
+# import sys
+# woord = sys.argv(1)
+
 woord = input("Word to look for: ")
 
 img = cv2.imread("13.png")
@@ -59,6 +62,10 @@ text_detected = parsed_results.get("ParsedText")
 
 fullstring = text_detected.upper()
 substring = woord
+
+f = open("screentext.txt", "w")
+f.write(fullstring)
+f.close()
 
 if fullstring != None and substring in fullstring:
  print("Found!")
